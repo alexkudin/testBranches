@@ -1,0 +1,306 @@
+package com.example.capitalsav.calc;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+
+
+
+    public void btnClick (View v){
+        TextView tv1 = (TextView) this.findViewById(R.id.CalcFirst);
+        TextView tv2 = (TextView) this.findViewById(R.id.CalcSecond);
+        String txt = tv1.getText().toString();//Получение строки из первого (основного) поля
+        String txt2 = tv2.getText().toString();//Получение строки из второго (верхнего) поля
+
+        int result = 0;
+
+        char DigitControlArr [] = txt.toCharArray();
+
+        int DigitControl = 0;
+
+        for (int i = 0; i < DigitControlArr.length; i++){
+            DigitControl++;
+        }
+
+        switch (v.getId()){
+            case R.id.btn1 :
+                if (DigitControl >= 7){
+                    Toast.makeText(this, "Нельзя сотворить больше цифр", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else{
+                    txt += "1";
+                    break;
+                }
+            case R.id.btn2 :
+                if (DigitControl >= 7){
+                    Toast.makeText(this, "Нельзя сотворить больше цифр", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else{
+                    txt += "2";
+                    break;
+                }
+            case R.id.btn3 :
+                if (DigitControl >= 7){
+                    Toast.makeText(this, "Нельзя сотворить больше цифр", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else{
+                    txt += "3";
+                    break;
+                }
+
+            case R.id.btn4 :
+                if (DigitControl >= 7){
+                    Toast.makeText(this, "Нельзя сотворить больше цифр", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else{
+                    txt += "4";
+                    break;
+                }
+            case R.id.btn5 :
+                if (DigitControl >= 7){
+                    Toast.makeText(this, "Нельзя сотворить больше цифр", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else{
+                    txt += "5";
+                    break;
+                }
+            case R.id.btn6 :
+                if (DigitControl >= 7){
+                    Toast.makeText(this, "Нельзя сотворить больше цифр", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else{
+                    txt += "6";
+                    break;
+                }
+            case R.id.btn7 :
+                if (DigitControl >= 7){
+                    Toast.makeText(this, "Нельзя сотворить больше цифр", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else{
+                    txt += "7";
+                    break;
+                }
+            case R.id.btn8 :
+                if (DigitControl >= 7){
+                    Toast.makeText(this, "Нельзя сотворить больше цифр", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else{
+                    txt += "8";
+                    break;
+                }
+            case R.id.btn9 :
+                if (DigitControl >= 7){
+                    Toast.makeText(this, "Нельзя сотворить больше цифр", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else{
+                    txt += "9";
+                    break;
+                }
+            case R.id.btn0 :
+                if (DigitControl >= 7){
+                    Toast.makeText(this, "Нельзя сотворить больше цифр", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else{
+                    txt += "0";
+                    break;
+                }
+            case R.id.btn00 :
+                if (DigitControl >= 7){
+                    Toast.makeText(this, "Нельзя сотворить больше цифр", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else{
+                    txt += "00";
+                    break;
+                }
+            case R.id.btnPlus :
+                if (DigitControl >= 8){
+                    Toast.makeText(this, "Нельзя сотворить больше цифр", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else{
+                    txt += "+";
+                    txt2 = txt;//Заполняем верхнюю строку содержимым нижней строки
+                    txt = "";//обнуляем первую строку
+                    break;
+                }
+            case R.id.btnMinus :
+                if (DigitControl >= 8){
+                    Toast.makeText(this, "Нельзя сотворить больше цифр", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else{
+                    txt += "-";
+                    txt2 = txt;//Заполняем верхнюю строку содержимым нижней строки
+                    txt = "";//обнуляем первую строку
+                    break;
+                }
+            case R.id.btnMultiply :
+                if (DigitControl >= 8){
+                    Toast.makeText(this, "Нельзя сотворить больше цифр", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else{
+                    txt += "*";
+                    txt2 = txt;//Заполняем верхнюю строку содержимым нижней строки
+                    txt = "";//обнуляем первую строку
+                    break;
+                }
+            case R.id.btnDivide :
+                if (DigitControl >= 8){
+                    Toast.makeText(this, "Нельзя сотворить больше цифр", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else{
+                    txt += "/";
+                    txt2 = txt;//Заполняем верхнюю строку содержимым нижней строки
+                    txt = "";//обнуляем первую строку
+                    break;
+                }
+            case R.id.btnBS :
+                char [] BSChar = txt.toCharArray();//Преобразование строки в массив чар
+                int coutnOfDigit =0;
+
+                for (int i = 0; i < BSChar.length; i++){
+                    coutnOfDigit++;
+                }
+
+                if (coutnOfDigit <= 0){
+                    Toast.makeText(this, "Цифры закончились", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    String BSString = txt.substring(0, coutnOfDigit - 1);
+                    txt = BSString;
+                }
+                break;
+            case R.id.btnCE :
+                txt = "";
+                txt2 = "";
+                break;
+
+            case R.id.btnEqually :
+
+                char A [] = txt.toCharArray();//Пеобразование основной строки в чар массив
+                char B [] = txt2.toCharArray();//Пеобразование второй строки в чар массив
+                int index1 = 0;// Переменная для индекса знака мат. операции
+                int action = 0;// Переменная для определения мат. операции
+                int chekMainTextDigit = 0;
+                int chekSecondTextDigit = 0;
+
+                for (int i = 0; i < A.length; i++){
+                    chekMainTextDigit++;
+                }
+
+                for (int i = 0; i < B.length; i++){
+                    chekSecondTextDigit++;
+                }
+
+                if (chekMainTextDigit <= 0 || chekSecondTextDigit <= 0){
+                    Toast.makeText(this, "Нельзя посчитать это", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else{
+                    //Цикл нахождения знака мат. операции в строке
+                    for (int i =0; i < B.length; i++){
+                        if (B[i] == '+' || B[i] == '-' || B[i] == '*' || B[i] == '/'){
+
+                            index1 = i;
+                            break;
+                        }
+                    }
+
+                    if (index1 == 0){
+                        Toast.makeText(this, "Сначала введите первое число", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    else{
+                        //Определение какой из знаков мат. операции выбрал пользователь и присвоение
+                        //значения соответствующей переменной
+                        if (B[index1] == '+'){
+                            action = 1;
+                        }
+                        else
+                        if (B[index1] == '-'){
+                            action = 2;
+                        }
+                        else
+                        if (B[index1] == '*'){
+                            action = 3;
+                        }
+                        else
+                        if (B[index1] == '/'){
+                            action = 4;
+                        }
+
+                        String text1 = txt2.substring(0, index1);//Строка до знака мат. операции
+                        String text2 = txt;//Второе число
+
+                        int firstNumber = Integer.parseInt(text1);
+                        int secondNumber = Integer.parseInt(text2);
+
+                        if (action == 1){
+                            result = firstNumber + secondNumber;
+                            txt = Integer.toString(result);
+                            txt2 = "";
+                        }
+                        else
+                        if (action == 2){
+                            result = firstNumber - secondNumber;
+                            txt = Integer.toString(result);
+                            txt2 = "";
+                        }
+                        else
+                        if (action == 3){
+                            result = firstNumber * secondNumber;
+                            txt = Integer.toString(result);
+                            txt2 = "";
+                        }
+                        else
+                        if (action == 4){
+                            if (secondNumber == 0){
+                                Toast.makeText(this, "Нельзя разделить на ноль", Toast.LENGTH_SHORT).show();
+                            }
+                            else{
+                                result = firstNumber / secondNumber;
+                                txt = Integer.toString(result);
+                                txt2 = "";
+                            }
+
+                        }
+                        break;
+                    }
+
+
+                }
+
+
+        }
+
+        //Передаем текст в текстовое поле
+        tv1.setText(txt);
+        tv2.setText(txt2);
+
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+}

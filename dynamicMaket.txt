@@ -1,0 +1,98 @@
+package com.savka.myapplication;
+
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    private TableLayout mainTL;
+    private TableRow row1;
+    private TableRow row2;
+    private TableRow row3;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        this.setContentView(R.layout.activity_main);
+
+        this.mainTL = new TableLayout(this);
+        this.mainTL.setOrientation(TableLayout.VERTICAL);
+        this.mainTL.setPadding( (int)this.getResources().getDimension(R.dimen.activity_horizontal_margin),
+                                (int)this.getResources().getDimension(R.dimen.activity_vertical_margin),
+                                (int)this.getResources().getDimension(R.dimen.activity_horizontal_margin),
+                                (int)this.getResources().getDimension(R.dimen.activity_vertical_margin));
+
+        //=====Задание LayoutParams для mainLL
+        TableLayout.LayoutParams mainTabTP = new TableLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
+        this.mainTL.setLayoutParams(mainTabTP);
+
+        this.row1 = new TableRow(this);
+        this.row2 = new TableRow(this);
+        this.row3 = new TableRow(this);
+
+        TableRow.LayoutParams lpRow = new TableRow.LayoutParams();
+        lpRow.column = 3;
+
+        this.row1.setLayoutParams(lpRow);
+        this.row2.setLayoutParams(lpRow);
+        this.row3.setLayoutParams(lpRow);
+
+        Button B1 = new Button (this);
+        Button B2 = new Button (this);
+        Button B3 = new Button (this);
+        B1.setText("Button One");
+        B2.setText("Button Two");
+        B3.setText("Button Three");
+
+        TableRow.LayoutParams lpBut1 = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        this.row1.addView(B1, lpBut1);
+        this.row1.addView(B2, lpBut1);
+        this.row1.addView(B3, lpBut1);
+
+        this.mainTL.addView(row1, lpRow);
+
+        Button B4 = new Button (this);
+        Button B5 = new Button (this);
+        B4.setText("Button Four");
+        B5.setText("Button Five");
+
+        TableRow.LayoutParams lpBut2 = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        this.row2.addView(B4, lpBut2);
+        this.row2.addView(B5, lpBut1);
+
+        this.mainTL.addView(row2, lpRow);
+
+        Button B6 = new Button (this);
+        Button B7 = new Button (this);
+        B2.setText("Button Six");
+        B3.setText("Button Seven");
+
+        TableRow.LayoutParams lpBut3 = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        this.row3.addView(B6, lpBut1);
+        this.row3.addView(B7, lpBut3);
+
+        this.mainTL.addView(row3, lpRow);
+
+
+        this.setContentView(this.mainTL);
+    }
+
+}
